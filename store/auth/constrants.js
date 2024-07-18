@@ -9,7 +9,7 @@ export const checkTokenIsValidApi = "auth/token-is-valid";
 export const logoutApi = "auth/logout";
 export const autoLoginApi = "auth/auto-login";
 export const contactusApi = "/contact/add"
-
+export const deleteTodoApi = (todoId) => `/todo/delete/${todoId}`;
 
 
 

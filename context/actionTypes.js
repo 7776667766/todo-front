@@ -12,7 +12,7 @@
 
 export const deleteTodoApi = (todoId) => `/todo/delete/${todoId}`;
 
-export const DELETE_TODO_REQUEST = "DELETE_TODO_REQUEST";
+export const TODO_DELETE_LOADING = "TODO_DELETE_LOADING";
 export const DELETE_TODO_SUCCESS = "DELETE_TODO_SUCCESS";
 export const DELETE_TODO_FAILED = "DELETE_TODO_FAILED";
 

@@ -48,9 +48,10 @@ const SignUpForm = () => {
           <Grid item xs={12} md={12} lg={12} xl={12}>
             <Box>
               <Typography as="h1" fontSize="28px" fontWeight="700" mb="5px">
-                Get’s started.{" "}
+                Get’s starting to TODO APP{" "}
                 <img
                   src="/images/todo.jpeg"
+                  style={{ width: "100px", height: "70px" }}  
                 />
                 
               </Typography>

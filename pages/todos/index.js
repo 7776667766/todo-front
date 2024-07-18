@@ -17,13 +17,16 @@ import Image from "next/image";
 import Checkbox from "@mui/material/Checkbox";
 
 const Specialist = () => {
+
   const {
+    todo,
     getUserTodoFunApi,
-    deleteTodoFunApi
+    deleteTodoFunApi,
   } = useTodo();
 
-  const [specialist, setSpecialist] = useState([])
+  const [specialist, setSpecialist] = useState([]);
 
+console.log("26",specialist)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -46,12 +49,27 @@ const Specialist = () => {
     router.push(`/todos/edit?id=${id}`);
   };
 
-  const handleDelete = (id) => {
-    deleteTodoFunApi({ todoId: id });
+  const handleDelete = async (id) => {
+    try {
+      const updatedSpecialist = specialist.filter((item) => item.id !== id);
+      setSpecialist(updatedSpecialist);
 
+      await deleteTodoFunApi({ todoId: id });
+
+    } catch (error) {
+      console.error("Error deleting todo:", error);
+    }
   };
 
 
+  if (todo.isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (todo.isError) {
+    return <div>Error: {todo.error}</div>;
+  }
+  
   return (
     <>
       <Card
@@ -83,7 +101,7 @@ const Specialist = () => {
             My Todo Lists
           </Typography>
 
-          <Link href={"/todos/add"}>
+          <Link href={"/todos/addTodos"}>
             <Button
               variant="contained"
               sx={{

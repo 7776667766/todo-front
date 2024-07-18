@@ -3,7 +3,8 @@ import {
   loginFunApi,
   logoutFunApi,
   checkTokenIsValidFunApi,
-  registerFunApi
+  registerFunApi,
+  deleteServiceFunApi
 } from "./services";
 
 const authSlice = createSlice({
@@ -21,6 +22,13 @@ const authSlice = createSlice({
       isLoading: false,
       dataFetched: false,
     },
+    service: {
+      data: [],
+      isLoading: false,
+      error: null,
+      dataFatched: false,
+    },
+    
     allUsers: {
       data: [],
       isLoading: false,
@@ -87,6 +95,27 @@ const authSlice = createSlice({
         state.token = null;
         state.otpVerified = false;
       });
+
+      builder
+      .addCase(deleteServiceFunApi.pending, (state, action) => {
+        state.service.isLoading = true;
+        state.service.error = null;
+      })
+      .addCase(deleteServiceFunApi.fulfilled, (state, action) => {
+        state.service.isLoading = false;
+        state.service.data = state.service.data?.filter(
+          (ele) => ele._id !== action.payload,
+
+
+        );
+        state.service.dataFatched = true;
+      })
+      .addCase(deleteServiceFunApi.rejected, (state, action) => {
+        state.service.isLoading = false;
+        state.service.error = action.payload;
+        state.service.dataFatched = true;
+      });
+
 
     builder
       .addCase(checkTokenIsValidFunApi.pending, (state, action) => {

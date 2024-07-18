@@ -22,7 +22,7 @@ const AddTodosForm = ({ formData, isEditMode }) => {
 
 
   const initialValues = isEditMode
-    ? { ...formData, completed: false } // Add completed field to formData if it exists, otherwise default to false
+    ? { ...formData, completed: false }
     : {
       title: "",
       description: "",
@@ -42,7 +42,7 @@ const AddTodosForm = ({ formData, isEditMode }) => {
             data: values,
             onSuccess: () => {
               console.log("Update Todo Success");
-              router.push("/specialist");
+              router.push("/todos");
             },
           });
         } else {
@@ -50,7 +50,7 @@ const AddTodosForm = ({ formData, isEditMode }) => {
             data: values,
             onSuccess: () => {
               console.log("Add Todo Success");
-              router.push("/specialist");
+              router.push("/todos");
             },
           });
         }
@@ -115,7 +115,7 @@ const AddTodosForm = ({ formData, isEditMode }) => {
               <TextField
                 name="description"
                 fullWidth
-                label="Email Description"
+                label="Enter Description"
                 {...formik.getFieldProps("description")}
                 error={
                   formik.touched.description && formik.errors.description ? true : false
@@ -130,9 +130,7 @@ const AddTodosForm = ({ formData, isEditMode }) => {
                 }}
               />
             </Grid>
-
-
-            <Grid item xs={12}>
+            {isEditMode && <Grid item xs={12}>
               <FormControlLabel
                 control={
                   <Checkbox
@@ -144,8 +142,7 @@ const AddTodosForm = ({ formData, isEditMode }) => {
                 }
                 label="Completed"
               />
-            </Grid>
-
+            </Grid>}
 
             <Grid item xs={12} textAlign="left">
               <Button

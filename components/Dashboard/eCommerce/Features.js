@@ -30,14 +30,14 @@ const Features = () => {
       id: "1",
       title: specialist.length,
       subTitle: "Total Todos",
-      image: "/images/graph-icon.png",
+      image: "/images/total.jpeg",
       color: "successColor",
     },
     {
       id: "2",
       title: specialist.filter((todo) => todo.completed).length,
       subTitle: "Completed Todos",
-      image: "/images/users-icon.png",
+      image: "/images/completed.jpeg",
     },
   ];
 

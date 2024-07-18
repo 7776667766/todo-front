@@ -24,6 +24,8 @@ const Layout = ({ children }) => {
   const { isAuthenticated, role, otpVerified, validToken } = useSelector(
     (state) => state.auth
   );
+
+  console.log("isAuthenticated",isAuthenticated)
   // const { business } = useSelector((state) => state.business);
 
   useEffect(() => {
