@@ -25,7 +25,6 @@ const Layout = ({ children }) => {
     (state) => state.auth
   );
 
-  console.log("isAuthenticated",isAuthenticated)
   // const { business } = useSelector((state) => state.business);
 
   useEffect(() => {

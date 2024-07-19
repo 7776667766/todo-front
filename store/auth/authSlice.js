@@ -119,9 +119,11 @@ const authSlice = createSlice({
 
     builder
       .addCase(checkTokenIsValidFunApi.pending, (state, action) => {
+        
         state.validToken.isLoading = true;
       })
       .addCase(checkTokenIsValidFunApi.fulfilled, (state, action) => {
+        console.log("125", action.payload)
         localStorage.setItem("token", action.payload.token);
         state.validToken.isLoading = false;
         state.validToken.valid = true;

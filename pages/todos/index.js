@@ -61,7 +61,7 @@ console.log("26",specialist)
     }
   };
 
-
+  setSpecialist
   if (todo.isLoading) {
     return <div>Loading...</div>;
   }

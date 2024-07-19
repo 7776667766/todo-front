@@ -12,6 +12,11 @@
   ],
   "rootMainFiles": [],
   "pages": {
+    "/": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/index.js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -22,20 +27,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/todos": [
+    "/authentication/sign-in": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/todos.js"
-    ],
-    "/todos/addTodos": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/todos/addTodos.js"
-    ],
-    "/todos/edit": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/todos/edit.js"
+      "static/chunks/pages/authentication/sign-in.js"
     ]
   },
   "ampFirstPages": []

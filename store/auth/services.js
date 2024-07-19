@@ -85,7 +85,6 @@ export const registerFunApi = createAsyncThunk(
   }
 );
 
-
 export const loginFunApi = createAsyncThunk(
   "/api/user/login",
   async ({ data, onSuccess }) => {
@@ -94,10 +93,27 @@ export const loginFunApi = createAsyncThunk(
       console.log("response in loginFun => ", response.data);
       if (response.data.status === "success") {
         const responseData = response.data.data;
-          if (onSuccess) {
-            onSuccess(responseData.user.email);
+
+        if (responseData) {
+          if (data) {
+            localStorage.setItem("token", responseData.token);
+            toast.success("Verified");
+            if (onSuccess) {
+              onSuccess(responseData.user.email);
+            }
+            return responseData;
+          } else {
+            if (onSuccess) {
+              onSuccess();
+            }
+            return;
           }
-          return;
+        } else {
+          const errorMsg = data
+       ||      "You are not authorized to access dashboard"
+          toast.error(errorMsg);
+          throw new Error(errorMsg);
+        }
       } else {
         console.log("Error response in login Api => ", response.data);
         const err =
@@ -122,7 +138,6 @@ export const loginFunApi = createAsyncThunk(
     }
   }
 );
-
 
 export const logoutFunApi = createAsyncThunk("auth/logout", async () => {
   try {
